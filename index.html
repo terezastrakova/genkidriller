@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Vocabulary Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="selection-page" class="container">
+    <h1>Select Categories for the Quiz</h1>
+    <div class="category-container">
+      <div class="category-toggle">
+        <input type="checkbox" id="toggle-all">
+        <label for="toggle-all">All categories</label>
+      </div>
+
+      <div class="category">
+        <input type="checkbox" id="things">
+        <label for="things">Things</label>
+      </div>
+
+      <div class="category">
+        <input type="checkbox" id="places">
+        <label for="places">Places</label>
+      </div>
+
+      <div class="category">
+        <input type="checkbox" id="nouns">
+        <label for="nouns">Nouns</label>
+      </div>
+
+      <div class="category">
+        <input type="checkbox" id="u-verbs">
+        <label for="u-verbs">U - Verbs</label>
+      </div>
+      <div class="category">
+        <input type="checkbox" id="ru-verbs">
+        <label for="ru-verbs">Ru - Verbs</label>
+      </div>
+      <div class="category">
+        <input type="checkbox" id="irregular-verbs">
+        <label for="irregular-verbs">Irregular Verbs</label>
+      </div>
+
+      <div class="category">
+        <input type="checkbox" id="na-adjectives">
+        <label for="na-adjectives">Na - Adjectives</label>
+      </div>
+      <div class="category">
+        <input type="checkbox" id="i-adjectives">
+        <label for="i-adjectives">I - Adjectives</label>
+      </div>
+      <div class="category">
+        <input type="checkbox" id="other">
+        <label for="other">Other Expressions</label>
+      </div>
+    </div>
+
+    <div class="lesson-container">
+      <div class="lesson-toggle">
+        <input type="checkbox" id="toggle-all-lessons">
+        <label for="toggle-all-lessons">All lessons</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L1">
+        <label for="L1">Lesson 1</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L2">
+        <label for="L2">Lesson 2</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L3">
+        <label for="L3">Lesson 3</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L4">
+        <label for="L4">Lesson 4</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L5">
+        <label for="L5">Lesson 5</label>
+      </div>
+
+      <div class="lesson">
+        <input type="checkbox" id="L6">
+        <label for="L6">Lesson 6</label>
+      </div>
+    </div>
+
+    <button id="start-quiz">Start</button>
+    
+  </div>
+
+  <div id="test-page" class="container" style="display: none;">
+    <h1>Japanese Vocabulary Test</h1>
+    <!-- PROGRESS BAR -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="quiz" id="quiz"></div>
+  </div>
+  
+  <script src="wanakana.min.js"></script>
+  <script type="module" src="vocabulary.js"></script>
+  <script type="module" src="script2.js"></script>
+</body>
+</html>
