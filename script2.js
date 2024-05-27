@@ -2,14 +2,24 @@ import { vocabulary } from './vocabulary.js';
 // Define your vocabulary (English to Japanese)
 
 document.addEventListener('DOMContentLoaded', function () {
-    const toggleAll = document.getElementById('toggle-all');
+    const toggleAllCategories = document.getElementById('toggle-all');
     const categoryCheckboxes = document.querySelectorAll('.category input[type="checkbox"]');
+    const toggleAllLessons = document.getElementById('toggle-all-lessons');
+    const lessonCheckboxes = document.querySelectorAll('.lesson input[type="checkbox"]');
     const startButton = document.getElementById('start-quiz');
 
-    // Event listener for the master toggle switch
-    toggleAll.addEventListener('change', function () {
-        const isChecked = toggleAll.checked;
+    // Event listener for the master toggle switch for categories
+    toggleAllCategories.addEventListener('change', function () {
+        const isChecked = toggleAllCategories.checked;
         categoryCheckboxes.forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+    });
+
+    // Event listener for the master toggle switch for lessons
+    toggleAllLessons.addEventListener('change', function () {
+        const isChecked = toggleAllLessons.checked;
+        lessonCheckboxes.forEach(checkbox => {
             checkbox.checked = isChecked;
         });
     });
@@ -17,21 +27,29 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event listener for the "Start" button
     startButton.addEventListener('click', function () {
         const selectedCategories = [];
+        const selectedLessons = [];
+
         categoryCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
-                const categoryName = checkbox.parentElement.querySelector('input').id;
-                console.log(categoryName);
+                const categoryName = checkbox.id;
                 selectedCategories.push(categoryName);
             }
         });
 
-        if (selectedCategories.length === 0) {
-            alert('Please select at least one category.');
+        lessonCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                const lessonName = checkbox.id;
+                selectedLessons.push(lessonName);
+            }
+        });
+
+        if (selectedCategories.length === 0 || selectedLessons.length === 0) {
+            alert('Please select at least one category and one lesson.');
         } else {
-            // Call the function to start the quiz with the selected categories
+            // Call the function to start the quiz with the selected categories and lessons
             document.getElementById('selection-page').style.display = 'none';
             document.getElementById('test-page').style.display = '';
-            startQuiz(selectedCategories);
+            startQuiz(selectedCategories, selectedLessons);
         }
     });
 });
@@ -42,15 +60,14 @@ const progressBar = document.getElementById("progress-bar");
 
 
 // Function to start the quiz with selected categories
-function startQuiz(selectedCategories) {
-    // Your existing code for generating the quiz goes here
-
+function startQuiz(selectedCategories, selectedLessons) {
     // Filter vocabulary based on selected categories
-    const filteredVocabulary = vocabulary.filter(entry => selectedCategories.includes(entry.category));
+    const filteredVocabulary = vocabulary.filter(entry =>
+        selectedCategories.includes(entry.category) && selectedLessons.includes(entry.lesson)
+    );
 
     // Call the function to generate the test cards with the filtered vocabulary
     generateTestCards(filteredVocabulary);
-
 
     quiz.querySelectorAll('input').forEach(input => {
         input.addEventListener('keypress', function (e) {
@@ -143,6 +160,7 @@ function evaluateTranslation(currentCard, word, translation) {
         correctCnt++;
     } else {
         currentCard.classList.add('incorrect');
+        currentCard.querySelector('input').setAttribute('placeholder', translation);
     }
     currentCard.classList.add('attempted'); // Mark card as attempted
     currentCard.classList.remove('focused-card');
