@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const quiz = document.getElementById("quiz");
 const progressBar = document.getElementById("progress-bar");
-
+let totalCards = 0;
 
 // Function to start the quiz with selected categories
 function startQuiz(selectedCategories, selectedLessons) {
@@ -65,6 +65,8 @@ function startQuiz(selectedCategories, selectedLessons) {
     const filteredVocabulary = vocabulary.filter(entry =>
         selectedCategories.includes(entry.category) && selectedLessons.includes(entry.lesson)
     );
+    totalCards = filteredVocabulary.length;
+    console.log(totalCards);
 
     // Call the function to generate the test cards with the filtered vocabulary
     generateTestCards(filteredVocabulary);
@@ -79,7 +81,7 @@ function startQuiz(selectedCategories, selectedLessons) {
 
                 evaluateTranslation(card, word, translation);
 
-                if (correctCnt < Object.keys(vocabulary).length) {
+                if (correctCnt < Object.keys(filteredVocabulary).length) {
                     focusNextCard();
                 } else {
                     alert('All words are correct!');
@@ -90,7 +92,6 @@ function startQuiz(selectedCategories, selectedLessons) {
 }
 
 function updateProgressBar() {
-    const totalCards = vocabulary.length;
     const progress = (correctCnt / totalCards) * 100;
     progressBar.style.width = `${progress}%`;
 }
