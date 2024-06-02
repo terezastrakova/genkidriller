@@ -94,6 +94,10 @@ function startQuiz(selectedCategories, selectedLessons) {
                 e.preventDefault();
                 const card = input.closest('.card'); // Find the closest ancestor card element
                 const word = card.querySelector('.card-text span').textContent.trim();
+
+                if (input.value[input.value.length - 1] == 'n') {
+                    input.value = wanakana.toKana(input.value);
+                }
                 const translation = input.value.trim();
 
                 evaluateTranslation(card, word, translation);
