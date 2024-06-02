@@ -2,11 +2,14 @@ import { vocabulary } from './vocabulary.js';
 // Define your vocabulary (English to Japanese)
 
 document.addEventListener('DOMContentLoaded', function () {
+    const selectionPage = document.getElementById('selection-page');
+    const quizPage = document.getElementById('test-page');
     const toggleAllCategories = document.getElementById('toggle-all');
     const categoryCheckboxes = document.querySelectorAll('.category input[type="checkbox"]');
     const toggleAllLessons = document.getElementById('toggle-all-lessons');
     const lessonCheckboxes = document.querySelectorAll('.lesson input[type="checkbox"]');
     const startButton = document.getElementById('start-quiz');
+    const backButton = document.getElementById('go-back');
 
     // Event listener for the master toggle switch for categories
     toggleAllCategories.addEventListener('change', function () {
@@ -47,10 +50,15 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please select at least one category and one lesson.');
         } else {
             // Call the function to start the quiz with the selected categories and lessons
-            document.getElementById('selection-page').style.display = 'none';
-            document.getElementById('test-page').style.display = '';
+            selectionPage.style.display = 'none';
+            quizPage.style.display = '';
             startQuiz(selectedCategories, selectedLessons);
         }
+    });
+
+    backButton.addEventListener('click', function () {
+        selectionPage.style.display = '';
+        quizPage.style.display = 'none';
     });
 });
 
@@ -58,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function () {
 const quiz = document.getElementById("quiz");
 const progressBar = document.getElementById("progress-bar");
 let totalCards = 0;
+let correctCnt = 0;
+let currentCardIndex = 0; // Track the current card index
+
 
 // Function to start the quiz with selected categories
 function startQuiz(selectedCategories, selectedLessons) {
@@ -67,6 +78,12 @@ function startQuiz(selectedCategories, selectedLessons) {
     );
     totalCards = filteredVocabulary.length;
     console.log(totalCards);
+
+    // Delete last quiz
+    quiz.innerHTML = '';
+    correctCnt = 0;
+    currentCardIndex = 0; // Track the current card index
+
 
     // Call the function to generate the test cards with the filtered vocabulary
     generateTestCards(filteredVocabulary);
@@ -107,7 +124,7 @@ function generateTestCards(filteredVocabulary) {
     // Shuffle the vocabulary array
     shuffleArray(filteredVocabulary);
 
-    console.log("hi")
+    console.log("hi");
     filteredVocabulary.forEach(entry => {
         generateCard(entry.kana, entry.kanji, entry.english);
     });
@@ -145,9 +162,6 @@ function generateCard(kana, kanji, english) {
     wanakana.bind(input_field); // Assuming you have wanakana library for input handling
     quiz.appendChild(card);
 }
-
-let correctCnt = 0;
-let currentCardIndex = 0; // Track the current card index
 
 // // Generate the test cards
 // generateTestCards();

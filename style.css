@@ -16,6 +16,14 @@ body {
     display: flex;
 }
 
+#quiz-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    width: 80%;
+}
+
 .progress-container {
     position: sticky;
     top: 0;
@@ -52,11 +60,14 @@ body {
     background-color: #268bd2;
 
     border-radius: 1rem;
-    width: 15vw;
-    min-width: 200px;
-    padding: 2vw;
-    margin: 1vw;
-    font-size: 3vw;
+    /* width: 15vw; */
+    width: 200px;
+    /* min-width: 200px; */
+    /* padding: 2vw; */
+    /* margin: 1vw; */
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.5rem;
     text-align: center;
 }
 
