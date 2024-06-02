@@ -128,6 +128,15 @@
     <div id="quiz-navbar">
       <button id="go-back">Back</button>
       <h1>Japanese Vocabulary Test</h1>
+      <div style="display: flex;
+      flex-direction: column;
+      align-items: center;">
+        hint incorrect words
+        <label class="switch">
+          <input id="hint-toggle" type="checkbox" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
     <!-- PROGRESS BAR -->
     <div class="progress-container">
@@ -139,6 +148,8 @@
   
   <script src="wanakana.min.js"></script>
   <script type="module" src="vocabulary.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script type="module" src="script2.js"></script>
+
 </body>
 </html>

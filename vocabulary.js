@@ -209,7 +209,7 @@ const vocabulary = [
     { lesson: "L3", category: "i-adjectives", kana: "いい", english: "good" },
     { lesson: "L3", category: "i-adjectives", kana: "はやい", kanji: "早い", english: "early" },
     { lesson: "L3", category: "other", kana: "あまり", english: "not much" },
-    { lesson: "L3", category: "other", kana: "ぜんぜん ", kanji: "全然", english: "not at all" },
+    { lesson: "L3", category: "other", kana: "ぜんぜん", kanji: "全然", english: "not at all" },
     { lesson: "L3", category: "other", kana: "たいてい", kanji: "大抵", english: "usually" },
     { lesson: "L3", category: "other", kana: "ちょっと", english: "a little" },
     { lesson: "L3", category: "other", kana: "ときどき", kanji: "時々", english: "sometimes" },

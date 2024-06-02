@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 const quiz = document.getElementById("quiz");
 const progressBar = document.getElementById("progress-bar");
 let totalCards = 0;
@@ -95,9 +96,9 @@ function startQuiz(selectedCategories, selectedLessons) {
                 const card = input.closest('.card'); // Find the closest ancestor card element
                 const word = card.querySelector('.card-text span').textContent.trim();
 
-                if (input.value[input.value.length - 1] == 'n') {
-                    input.value = wanakana.toKana(input.value);
-                }
+                // if (input.value[input.value.length - 1] == 'n') {
+                input.value = wanakana.toKana(input.value);
+                // }
                 const translation = input.value.trim();
 
                 evaluateTranslation(card, word, translation);
@@ -148,7 +149,7 @@ function createElement(tag_name) {
 }
 
 function generateCard(kana, kanji, english) {
-    const card = createElement("label");
+    const card = createElement("div");
     card.setAttribute('class', 'card');
 
     const card_text = createElement("div");
@@ -165,10 +166,15 @@ function generateCard(kana, kanji, english) {
     card.appendChild(input_field);
     wanakana.bind(input_field); // Assuming you have wanakana library for input handling
     quiz.appendChild(card);
+
+    const card_overlay = createElement("div");
+    card_overlay.setAttribute('class', 'card-overlay');
+    card_overlay.textContent = kana;
+    // card_overlay.style.display = 'none';
+
+    card.appendChild(card_overlay);
 }
 
-// // Generate the test cards
-// generateTestCards();
 
 function evaluateTranslation(currentCard, word, translation) {
     const entry = vocabulary.find(entry => entry.english === word);
@@ -179,6 +185,15 @@ function evaluateTranslation(currentCard, word, translation) {
         correctCnt++;
     } else {
         currentCard.classList.add('incorrect');
+        if (document.getElementById("hint-toggle").checked) {
+            const overlay = currentCard.querySelector('.card-overlay');
+            console.log(overlay);
+            overlay.style.display = '';
+            console.log(overlay);
+            overlay.style.opacity = 1;
+            $(overlay).fadeOut(4000);
+        }
+
         currentCard.querySelector('input').setAttribute('placeholder', translation);
     }
     currentCard.classList.add('attempted'); // Mark card as attempted
@@ -222,3 +237,12 @@ function focusCard(card, inputField) {
     card.classList.remove('incorrect');
     card.classList.add('focused-card');
 }
+
+document.addEventListener('click', function () {
+    currentCardIndex = currentCardIndex - 1;
+    try {
+        focusNextCard();
+    } catch (error) {
+        console.error(error);
+    }
+});
