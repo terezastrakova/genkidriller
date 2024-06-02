@@ -12,6 +12,18 @@ body {
     align-items: center;
 }
 
+#selection-page p,
+#selection-page ul {
+    color: #b2a794;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#selection-page li {
+    margin-left: 20px;
+}
+
 #selection-container {
     display: flex;
 }
