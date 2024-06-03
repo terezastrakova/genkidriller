@@ -30,6 +30,9 @@
         <li>
           You need to write suffixes with the ～ for now, so for example <em>～さい</em> for <em>...years old</em>.
         </li>
+        <li>
+          WARNING: if you pick U - Verbs <em>experimental</em> you will have to write all u - verbs with trailing <em> う</em> (with space). So <em>はいる う</em> for <em>to enter</em>.
+        </li>
       </ul>
     <p style="font-style: italic; margin-top: 10px;">
       feel free to ping me on discord with any problem or suggestion ^-^
@@ -63,6 +66,10 @@
       <div class="category">
         <input type="checkbox" id="u-verbs">
         <label for="u-verbs">U - Verbs</label>
+      </div>
+      <div class="category">
+        <input type="checkbox" id="u-verbs-special">
+        <label for="u-verbs-special">U - Verbs <em>experimental</em></label>
       </div>
       <div class="category">
         <input type="checkbox" id="ru-verbs">
@@ -132,14 +139,27 @@
     <div id="quiz-navbar">
       <button id="go-back">Back</button>
       <h1>Japanese Vocabulary Test</h1>
-      <div style="display: flex;
-      flex-direction: column;
-      align-items: center;">
+      <div>
+        <div style="display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 3px;">
         hint incorrect words
         <label class="switch">
           <input id="hint-toggle" type="checkbox" checked>
           <span class="slider round"></span>
         </label>
+      </div>
+      <div style="display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 3px;">
+        verbs in -masu form
+        <label class="switch">
+          <input id="masu-toggle" type="checkbox" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
       </div>
     </div>
     <!-- PROGRESS BAR -->
