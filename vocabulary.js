@@ -167,7 +167,7 @@ const vocabulary = [
     { lesson: "L4", category: "other", kana: "した", kanji: "下", english: "under（〜の）" },
     { lesson: "L4", category: "other", kana: "ちかく", kanji: "近く", english: "near; nearby（〜の）" },
     { lesson: "L4", category: "other", kana: "となり", kanji: "隣", english: "next（〜の）" },
-    { lesson: "L4", category: "other", kana: "あいだ", kanji: "間", english: "between（との）" },
+    { lesson: "L4", category: "other", kana: "あいだ", kanji: "間", english: "between（A と B の）" },
     { lesson: "L4", category: "nouns", kana: "げつようび", kanji: "月曜日", english: "Monday" },
     { lesson: "L3", category: "nouns", kana: "えいが", kanji: "映画", english: "movie" },
     { lesson: "L3", category: "nouns", kana: "おんがく", kanji: "音楽", english: "music" },
