@@ -245,7 +245,6 @@ const vocabulary = [
     { lesson: "L1", category: "noun", kana: "でんわ", english: "telephone" },
     { lesson: "L1", category: "noun", kana: "ともだち", english: "friend" },
     { lesson: "L1", category: "noun", kana: "なまえ", english: "name" },
-    { lesson: "L1", category: "other", kana: "なん/なに", english: "what" },
     { lesson: "L1", category: "other", kana: "にほん", english: "Japan" },
     { lesson: "L1", category: "other", kana: "～ねんせい", english: "... year student", example: "いちねんせい (ichinensee) first-year student" },
     { lesson: "L1", category: "other", kana: "はい", english: "yes" },
