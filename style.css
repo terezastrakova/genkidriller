@@ -178,7 +178,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #9d9072;
+    background-color: #333333;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -201,6 +201,14 @@ input:checked+.slider {
 
 input:focus+.slider {
     box-shadow: 0 0 1px #ba7500;
+}
+
+input:disabled+.slider {
+    background-color: #333333;
+}
+
+input:disabled+.slider:before {
+    background-color: #777777;
 }
 
 input:checked+.slider:before {

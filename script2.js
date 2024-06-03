@@ -1,6 +1,8 @@
 import { vocabulary } from './vocabulary.js';
 // Define your vocabulary (English to Japanese)
 
+let uVerbsSpecial = false;
+
 document.addEventListener('DOMContentLoaded', function () {
     const selectionPage = document.getElementById('selection-page');
     const quizPage = document.getElementById('test-page');
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event listener for the "Start" button
     startButton.addEventListener('click', function () {
+        uVerbsSpecial = false;
         const selectedCategories = [];
         const selectedLessons = [];
 
@@ -38,7 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectedCategories.push(categoryName);
             }
         });
-
+        if (selectedCategories.includes('u-verbs-special')) {
+            uVerbsSpecial = true;
+        }
+        console.log(uVerbsSpecial);
         lessonCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 const lessonName = checkbox.id;
@@ -99,7 +105,9 @@ function startQuiz(selectedCategories, selectedLessons) {
                 // if (input.value[input.value.length - 1] == 'n') {
                 input.value = wanakana.toKana(input.value);
                 // }
+                console.log('input' + input.value);
                 const translation = input.value.trim();
+                console.log('input trimmed' + translation);
 
                 evaluateTranslation(card, word, translation);
 
@@ -177,7 +185,9 @@ function generateCard(kana, kanji, english) {
 
 
 function evaluateTranslation(currentCard, word, translation) {
-    const entry = vocabulary.find(entry => entry.english === word);
+    // TODO : if u special
+
+    const entry = uVerbsSpecial && vocabulary.find(entry => entry.english === word && entry.category == 'u-verbs') ? vocabulary.find(entry => entry.english === word && entry.category == 'u-verbs-special') : vocabulary.find(entry => entry.english === word);
     console.log(entry)
     if (entry && (entry.kana === translation || entry.kanji === translation || entry.english === translation)) {
         currentCard.classList.remove('incorrect');
