@@ -368,7 +368,7 @@ const vocabulary = [
     { lesson: "L2", category: "nouns", kana: "ほん", kanji: "本", english: "book" },
     { lesson: "L2", category: "nouns", kana: "きっさてん", kanji: "喫茶店", english: "café" },
     { lesson: "L2", category: "nouns", kana: "ぎんこう", kanji: "銀行", english: "bank" },
-    { lesson: "L2", category: "nouns", kana: "といれ", kanji: "トイレ", english: "toilet; restroom" },
+    { lesson: "L2", category: "nouns", kana: "トイレ", english: "toilet; restroom" },
     { lesson: "L2", category: "nouns", kana: "としょかん", kanji: "図書館", english: "library" },
     { lesson: "L2", category: "nouns", kana: "ゆうびんきょく", kanji: "郵便局", english: "post office" },
     { lesson: "L2", category: "other", kana: "いくら", english: "how much" },
